@@ -16,9 +16,14 @@ public class TaskController {
         this.tasksService = tasksService;
     }
 
-    @GetMapping("")
+    @GetMapping("/all")
     ResponseEntity<List<TaskEntity>> getAllTasks() {
         return ResponseEntity.ok(tasksService.getAllTasks());
+    }
+    @GetMapping("")
+    ResponseEntity<List<TaskEntity>> getTasksByPageAndSize(@RequestParam int pageNumber,@RequestParam int size) {
+        System.out.println("Pagination called");
+        return ResponseEntity.ok(tasksService.getTasksByPageAndSize(pageNumber, size));
     }
 
     @GetMapping("/{taskId}")

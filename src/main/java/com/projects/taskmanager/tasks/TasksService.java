@@ -2,6 +2,8 @@ package com.projects.taskmanager.tasks;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.scheduling.config.Task;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,11 @@ public class TasksService {
 
     List<TaskEntity> getAllTasks(){
         return tasksRepository.findAll();
+    }
+    List<TaskEntity> getTasksByPageAndSize(int pageNumber, int size){
+        Page page = tasksRepository.findAll(PageRequest.of(pageNumber-1, size));
+
+        return page.toList();
     }
 
     TaskEntity getTaskById(Long taskId){
