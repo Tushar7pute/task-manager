@@ -44,4 +44,7 @@ jar{
 				"Main-Class": "com.projects.taskmanager.TaskmanagerApplication"
 		)
 	}
+
+	apply plugin: 'application'
+	mainClassName = 'com.projects.taskmanager.TaskmanagerApplication'
 }
